@@ -1,0 +1,43 @@
+﻿@{
+    Page.Title = "Title goes here";
+    //Layout = "Your Layout Page goes here";
+}
+
+<div>
+    <p>
+        <label for="firstName">
+            First Name: @Request.QueryString["firstName"]
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Last Name: @Request.QueryString["lastName"]
+        </label>
+    </p>
+    <p>
+        <label>
+            Handphone Number: @Request.QueryString["handphoneNumber"]
+        </label>
+    </p>
+    <p>
+        <label>
+            Date of Birth: @Request.QueryString["dob"]
+        </label>
+    </p>
+    <p>
+        <label>
+            Email: @Request.QueryString["email"]
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Highest qualification: @Request.QueryString["qualification"]
+        </label>
+    </p>
+
+    <p>
+        <label for="intake">Intake: @Request.QueryString["intake"]</label>
+    </p>
+</div>

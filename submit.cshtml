@@ -1,0 +1,126 @@
+﻿@{
+    Page.Title = "Exercise 2 - Submitted Form";
+    //Layout = "Your Layout Page goes here";
+}
+
+<div>
+    <table>
+        <tr>
+            <td>Buyer's Name:</td>
+            <td>
+                @Request.Form["name"] from @Request.Form["hidname"]
+            </td>
+        </tr>
+        <tr>
+            <td>Security Key:</td>
+            <td>
+                Password: @Request.Form["password"]
+                Hidden Key: @Request.Form["hiddenkey"]
+            </td>
+        </tr>
+        <tr>
+            <td>Street Address:</td>
+            <td>
+                @Request.Form["street"]
+            </td>
+        </tr>
+        <tr>
+            <td>City, State, Zip:</td>
+            <td>
+                @Request.Form["city"]
+            </td>
+        </tr>
+        <tr>
+            <td>Country:</td>
+            <td>
+                @Request.Form["country"]
+            </td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>
+                @Request.Form["email"]
+            </td>
+        </tr>
+    </table>
+
+    @{
+        var unpop = Request.Form["unpop"].AsInt();
+        var caramel = Request.Form["caramel"].AsInt();
+        var caramelnut = Request.Form["caramelnut"].AsInt();
+        var toffeynut = Request.Form["toffeynut"].AsInt();
+
+        var totalPrice = (3.0 * unpop) + (3.5 * caramel) + (4.5 * caramelnut) + (5.0 * toffeynut);
+
+    }
+    <table border="1">
+        <!-- First, column headings -->
+        <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+
+        <!-- Now, the table data entries -->
+        <tr>
+            <td>Unpopped Popcorn (1 lb.)</td>
+            <td>$3.00</td>
+            <td>
+                @unpop
+            </td>
+        </tr>
+        <tr>
+            <td>Caramel Popcorn (2 lb. canister)</td>
+            <td>$3.50</td>
+            <td>@caramel</td>
+        </tr>
+        <tr>
+            <td>Caramel Nut Popcorn (2 lb. canister)</td>
+            <td>$4.50</td>
+            <td>@caramelnut</td>
+        </tr>
+        <tr>
+            <td>Toffey Nut Popcorn (2 lb. canister)</td>
+            <td>$5.00</td>
+            <td>@toffeynut</td>
+        </tr>
+        <tr>
+            <td colspan="3">Total Price: @totalPrice</td>
+        </tr>
+    </table>
+    <h3>Payment Method: @Request.Form["payment"]</h3>
+
+    <h3>Quality Feedback:</h3>
+
+    @{
+        var feedbackvg = Request.Form["feedbackvg"];
+        var feedbackg = Request.Form["feedbackg"];
+        var feedbacknl = Request.Form["feedbacknl"];
+        var feedbackp = Request.Form["feedbackp"];
+    }
+
+    @if (feedbackvg != null)
+    {
+        @Html.Label("Very Good")
+        @Html.CheckBox("feedbackvg", true, htmlAttributes: new { @id = "feedbackvg", @value = "vgood" });
+    }
+
+    @if (feedbackg != null)
+    {
+        @Html.Label("Good")
+        @Html.CheckBox("feedbackg", true, htmlAttributes: new { @id = "feedbackg", @value = "good" });
+    }
+
+    @if (feedbacknl != null)
+    {
+        @Html.Label("Don't Like")
+        @Html.CheckBox("feedbacknl", true, htmlAttributes: new { @id = "feedbackg", @value = "no like" });
+    }
+    
+    @if (feedbackg != null)
+    {
+        @Html.Label("Poor")
+        @Html.CheckBox("feedbackp", true, htmlAttributes: new { @id = "feedbackp", @value = "poor" });
+    }
+
+</div>
