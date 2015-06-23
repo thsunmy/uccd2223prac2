@@ -104,14 +104,13 @@
         @Html.Label("Very Good")
         @Html.CheckBox("feedbackvg", true, htmlAttributes: new { @id = "feedbackvg", @value = "vgood", @disabled = "true" });
     }
-
-    @{
-        if (feedbackg != null)
-        {
-            Html.Label("Good");
-            Html.CheckBox("feedbackg", true, htmlAttributes: new { @id = "feedbackg", @value = "good", @disabled = "true" });
-        }
+    
+    @if (feedbackg != null)
+    {
+        @Html.Label("Good");
+        @Html.CheckBox("feedbackg", true, htmlAttributes: new { @id = "feedbackg", @value = "good", @disabled = "true" });
     }
+
 
     @if (feedbacknl != null)
     {
