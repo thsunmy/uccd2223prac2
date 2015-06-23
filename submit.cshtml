@@ -102,25 +102,27 @@
     @if (feedbackvg != null)
     {
         @Html.Label("Very Good")
-        @Html.CheckBox("feedbackvg", true, htmlAttributes: new { @id = "feedbackvg", @value = "vgood" });
+        @Html.CheckBox("feedbackvg", true, htmlAttributes: new { @id = "feedbackvg", @value = "vgood", @disabled = "true" });
     }
 
-    @if (feedbackg != null)
-    {
-        @Html.Label("Good")
-        @Html.CheckBox("feedbackg", true, htmlAttributes: new { @id = "feedbackg", @value = "good" });
+    @{
+        if (feedbackg != null)
+        {
+            Html.Label("Good");
+            Html.CheckBox("feedbackg", true, htmlAttributes: new { @id = "feedbackg", @value = "good", @disabled = "true" });
+        }
     }
 
     @if (feedbacknl != null)
     {
         @Html.Label("Don't Like")
-        @Html.CheckBox("feedbacknl", true, htmlAttributes: new { @id = "feedbackg", @value = "no like" });
+        @Html.CheckBox("feedbacknl", true, htmlAttributes: new { @id = "feedbackg", @value = "no like", @disabled = "true" });
     }
-    
-    @if (feedbackg != null)
+
+    @if (feedbackp != null)
     {
         @Html.Label("Poor")
-        @Html.CheckBox("feedbackp", true, htmlAttributes: new { @id = "feedbackp", @value = "poor" });
+        @Html.CheckBox("feedbackp", true, htmlAttributes: new { @id = "feedbackp", @value = "poor", @disabled = "true" });
     }
 
 </div>
